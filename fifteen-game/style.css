@@ -1,0 +1,43 @@
+body {
+	background-color:cyan;
+	background-image: url("img/background.jpg");
+}
+#wrapper {
+	width:80%;
+	height:100%;
+	background-color: rgba(173,216,230,0.7);
+	margin: auto;
+}
+	
+#newFifteenGameButton {
+	border:solid 1px white;
+	background-color:rgb(70,130,180);
+	color: white;
+	margin: auto;
+	font-size:25;
+	font-family: Times New Roman;
+}
+	
+td {				
+	text-align:center;				
+	font-family:Times New Roman;
+	color: rgb(70,130,180);		
+}
+#Gamebox td {
+	border:solid 1px white;
+	text-align:center;
+	font-size:40px;
+	font-family:Times New Roman;
+	color: white;
+	width: 60px;
+	height: 60px;
+	background-color: rgb(70,130,180);
+}
+
+#Gamebox td:hover {
+	color:rgb(0,0,205);
+	cursor: hand;
+}
+h1.gameName {
+	color: rgb(0,0,128);
+}
