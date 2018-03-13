@@ -10,14 +10,6 @@ class Date {
 private:
 	unsigned int day, year, month;
 	string date;
-	bool isLeapYear() {
-		if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) {//OR (division by 4 return remainder 0 and division by 100 do not return remainder 0) OR (division by 400 return remainder 0
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
 	bool isTrueDate(unsigned int days, unsigned int monthes, unsigned int years) {
 		if (years >= 1 && years <= 2050) {
 			if (isLeapYear() == 0 && (monthes == 2 && days >= 1 && days < 29)) {
@@ -46,8 +38,14 @@ private:
 		}
 	}
 public:
-	
-
+	bool isLeapYear() const {
+		if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) {//OR (division by 4 return remainder 0 and division by 100 do not return remainder 0) OR (division by 400 return remainder 0
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 	Date() {
 		day = 1;
 		month = 1;
