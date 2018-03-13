@@ -1,12 +1,15 @@
 #pragma once
 #include <iostream>
 #include <string>
-
 using namespace std;
+const int with_dot = 1;
+const int with_hyphen = 2;
+const int with_slash = 3;
 
 class Date {
 private:
 	unsigned int day, year, month;
+	string date;
 	bool isLeapYear() {
 		if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) {//OR (division by 4 return remainder 0 and division by 100 do not return remainder 0) OR (division by 400 return remainder 0
 			return true;
@@ -15,7 +18,7 @@ private:
 			return false;
 		}
 	}
-	bool isTrue(unsigned int days, unsigned int monthes, unsigned int years) {
+	bool isTrueDate(unsigned int days, unsigned int monthes, unsigned int years) {
 		if (years >= 1 && years <= 2050) {
 			if (isLeapYear() == 0 && (monthes == 2 && days >= 1 && days < 29)) {
 				return 1;
@@ -34,22 +37,28 @@ private:
 			}
 		}
 	}
-	void NeedZeroD(unsigned int d) {
-		if (d < 10) {
-			cout << "0";
-		}
-	}
-	void NeedZeroM(unsigned int m) {
+	string NeedZero(unsigned int m) {
 		if (m < 10) {
-			cout << "0";
+			return "0";
+		}
+		else {
+			return "";
 		}
 	}
 public:
+	
+
 	Date() {
 		day = 1;
 		month = 1;
 		year = 1974;
 	}
+	Date(int d, int m, int y) {
+		day = d;
+		month = m;
+		year = y;
+	}
+
 	void setDay(unsigned int d) {
 		day = d;
 	}
@@ -59,27 +68,38 @@ public:
 	void setYear(unsigned int y) {
 		year = y;
 	}
-	void coutDate() {
-		if (isTrue(day, month, year) == 1) {
-			short int i;
-			cout << "In what format do you want to see the date?\ndd/mm/y - 1\ndd.mm.y - 2\nmm-dd-y - 3\n";
-			cin >> i;
-			cout << "Leap-year: " << isLeapYear() << endl;
+	string getDate(int i) {
+		string hyphen = "-", dot = ".", slash = "/";
+		if (isTrueDate(day, month, year) == 1) {
 			if ((isLeapYear() != 0 && day <= 29 && month == 2) || (isLeapYear() == 0 && day < 29 && month == 2) || month != 2) {
-				if (i == 1) {
-					NeedZeroD(day);
-					cout << day << ".";
+				if (i == with_dot) {
+					string isZero = NeedZero(day);
+					date = isZero;
+					date += to_string(day);
+					date += dot;
 
-					NeedZeroM(month);
-					cout << month << "." << year << endl;
+					isZero = NeedZero(month);
+					date += isZero;
+					date += to_string(month);
+					date += dot;
+					date += to_string(year);
+					return date;
 				}
-				else if (i == 2) {
-					NeedZeroD(day);
-					cout << day << "/";
-					NeedZeroM(month);
-					cout << month << "/" << year << endl;
+				else if (i == with_hyphen) {
+					string isZero = NeedZero(day);
+					
+					date = isZero;
+					date += to_string(day);
+					date += dot;
+
+					isZero = NeedZero(month);
+					date += isZero;
+					date += to_string(month);
+					date += dot;
+					date += to_string(year);
+					return date;
 				}
-				else if (i == 3) {
+				else if (i == with_slash) {
 					string lettmonth = "";
 					switch (month) {
 					case 1: lettmonth = "Jan"; break;
@@ -95,15 +115,20 @@ public:
 					case 11: lettmonth = "Nov"; break;
 					case 12: lettmonth = "Dec"; break;
 					}
-					cout << day << "-" << lettmonth << "-" << year;
+					date = to_string(day);
+					date += slash;
+					date += lettmonth;
+					date += slash;
+					date += to_string(year);
+					return date;
 				}
 			}
 			else {
-				cout << "Wrong way";
+				return "Wrong way";
 			}
 		}
 		else {
-			cout << "Wrong date";
+			return "Wrong date";
 		}
 	}
 	~Date() { }
