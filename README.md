@@ -6,5 +6,6 @@ It's a class to enter a date in a console and to show, is entered year is a leap
 Simple fifteen game, created with native JS and view using HTML+CSS.
 ## Calculator
 Simple calculator on Java, using Swing for a GUI. 
-##Snake matrix
+## Snake matrix
 Create matrix looks like a snake, ex: http://uploads.ru/zt5Lp.jpg
+Complexity O(n^2)
