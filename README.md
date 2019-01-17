@@ -9,3 +9,7 @@ Simple calculator on Java, using Swing for a GUI.
 ## Snake matrix
 Create matrix looks like a snake, ex: http://uploads.ru/zt5Lp.jpg
 Complexity O(n^2)
+
+## Calculus Solver - Gradient finder
+
+Script, created for find gradient. Created due to the need to pass mathematical analysis course in the university.
